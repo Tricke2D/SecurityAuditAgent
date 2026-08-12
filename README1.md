@@ -71,7 +71,7 @@ Manusia sulit melacak aliran data dari input user (source) ke fungsi berbahaya (
 
 ## 🔧 How It Works
 
-### Simple View (Untuk Non-IT)
+### Simple View 
 
 Bayangkan sistem ini seperti detektif keamanan yang:
 
@@ -81,7 +81,7 @@ Bayangkan sistem ini seperti detektif keamanan yang:
 4. **Memverifikasi dengan AI** — menanyakan ke AI lokal apakah temuan benar-benar berbahaya
 5. **Memberi laporan** — dengan penjelasan lengkap dan saran perbaikan
 
-### Technical View (Untuk Developer)
+### Technical View 
 
 Sistem terdiri dari 3 fase utama:
 
@@ -145,12 +145,12 @@ Sistem terdiri dari 3 fase utama:
 ### Vulnerability Report
 
 ```
-┌──────────────────────────────────────────────────────────────────────────────────┐
-│                          Vulnerability Report                                   │
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│                          Vulnerability Report                                        │
 ├──────────────┬───────────────────────────┬──────────────────┬────────────┬───────────┤
 │ Severity     │ File:Line                 │ Pattern          │ Exploitable│ Confidence│
 ├──────────────┼───────────────────────────┼──────────────────┼────────────┼───────────┤
-│ HIGH         │ vulnerable_query.py:9     │ sql_injection    │ ✅ Yes     │ 100.0%    │
+│ HIGH         │ vulnerable_query.py:9     │ sql_injection    │ ✅ Yes     │ 100.0%    │    
 │ HIGH         │ taint_flow_demo.py:11     │ sql_injection    │ ✅ Yes     │ 100.0%    │
 └──────────────┴───────────────────────────┴──────────────────┴────────────┴───────────┘
 ```
@@ -176,43 +176,43 @@ Sistem terdiri dari 3 fase utama:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           Autonomous Security Audit Agent                    │
+│                           Autonomous Security Audit Agent                   │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                      ast-engine (Go)                                 │   │
-│  │  ┌───────────┐  ┌───────────┐  ┌───────────┐  ┌───────────────┐   │   │
-│  │  │  Parser   │  │  Pattern  │  │  Call     │  │  Taint        │   │   │
-│  │  │ (tree-    │  │  Matcher  │  │  Graph    │  │  Propagator   │   │   │
-│  │  │  sitter)  │  │           │  │  Builder  │  │               │   │   │
-│  │  └───────────┘  └───────────┘  └───────────┘  └───────────────┘   │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                      ast-engine (Go)                                │    │
+│  │  ┌───────────┐  ┌───────────┐  ┌───────────┐  ┌───────────────┐     │    │
+│  │  │  Parser   │  │  Pattern  │  │  Call     │  │  Taint        │     │    │
+│  │  │ (tree-    │  │  Matcher  │  │  Graph    │  │  Propagator   │     │    │
+│  │  │  sitter)  │  │           │  │  Builder  │  │               │     │    │
+│  │  └───────────┘  └───────────┘  └───────────┘  └───────────────┘     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                    │                                        │
 │                                    ▼                                        │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                         PostgreSQL                                   │   │
-│  │  ┌─────────────────────────────────────────────────────────────┐   │   │
-│  │  │ codebase_files │ static_findings │ functions │ call_edges   │   │   │
-│  │  └─────────────────────────────────────────────────────────────┘   │   │
-│  │  ┌─────────────────────────────────────────────────────────────┐   │   │
-│  │  │ taint_flows │ llm_verifications │ vulnerability_report       │   │   │
-│  │  └─────────────────────────────────────────────────────────────┘   │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                         PostgreSQL                                  │    │
+│  │  ┌─────────────────────────────────────────────────────────────┐    │    │
+│  │  │ codebase_files │ static_findings │ functions │ call_edges   │    │    │
+│  │  └─────────────────────────────────────────────────────────────┘    │    │
+│  │  ┌─────────────────────────────────────────────────────────────┐    │    │
+│  │  │ taint_flows │ llm_verifications │ vulnerability_report      │    │    │
+│  │  └─────────────────────────────────────────────────────────────┘    │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                    │                                        │
 │                                    ▼                                        │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                   orchestrator (Python)                             │   │
-│  │  ┌───────────┐  ┌───────────┐  ┌───────────┐  ┌───────────────┐   │   │
-│  │  │  Ollama   │  │  Prompt   │  │  CVE      │  │  Report       │   │   │
-│  │  │  Client   │  │  Template │  │  Matcher  │  │  Generator    │   │   │
-│  │  └───────────┘  └───────────┘  └───────────┘  └───────────────┘   │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                   orchestrator (Python)                             │    │
+│  │  ┌───────────┐  ┌───────────┐  ┌───────────┐  ┌───────────────┐     │    │
+│  │  │  Ollama   │  │  Prompt   │  │  CVE      │  │  Report       │     │    │
+│  │  │  Client   │  │  Template │  │  Matcher  │  │  Generator    │     │    │
+│  │  └───────────┘  └───────────┘  └───────────┘  └───────────────┘     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                    │                                        │
 │                                    ▼                                        │
-│  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │                         Ollama                                       │   │
-│  │                    (qwen2.5-coder:7b)                                │   │
-│  └─────────────────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                         Ollama                                      │    │
+│  │                    (qwen2.5-coder:7b)                               │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -223,7 +223,7 @@ Sistem terdiri dari 3 fase utama:
 ```
 security-audit-agent/
 ├── services/
-│   ├── ast-engine/                    # Go service (Fase 1 & 2)
+│   ├── ast-engine/                    # Go service 
 │   │   ├── cmd/
 │   │   │   └── scanner/
 │   │   │       └── main.go            # CLI entry point
@@ -238,7 +238,7 @@ security-audit-agent/
 │   │       ├── migrations/            # SQL migrations
 │   │       └── queries/               # sqlc queries
 │   │
-│   └── orchestrator/                  # Python service (Fase 3)
+│   └── orchestrator/                  # Python service 
 │       ├── src/
 │       │   └── orchestrator/
 │       │       ├── config.py          # Configuration
@@ -656,7 +656,7 @@ MIT License — see LICENSE file for details.
 
 ### Authors
 
-- **Project Lead:** [Your Name]
+- **Project Lead:** Muhamad Syukron Zakka
 
 ---
 
